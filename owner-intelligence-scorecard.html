@@ -60,6 +60,9 @@ h2.sh.lt{color:var(--white)}
 .btn-dk:hover{background:var(--green);border-color:var(--green)}
 .btn-dk:disabled{opacity:.3;cursor:not-allowed}
 .btn-dk:disabled:hover{background:var(--black)}
+.btn-grn{background:#53966b;color:var(--white);border:1px solid #53966b;cursor:pointer;font-family:var(--font)}
+.btn-grn:hover{background:#437a57;border-color:#437a57}
+.btn-grn:disabled{opacity:.3;cursor:not-allowed}
 .btn-ol{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.28)}
 .btn-ol:hover{border-color:rgba(255,255,255,.65)}
 .btn-ol-dk{background:transparent;color:var(--black);border:1px solid var(--rule)}
@@ -224,6 +227,7 @@ h2.sh.lt{color:var(--white)}
     <div class="st-tag">15 Questions · About 5 Minutes</div>
     <h1 class="st-h1">The Owner Intelligence<br><span>Scorecard</span></h1>
     <p class="st-sub">Find out where your program stands across the five pillars that determine whether you're in control of your capital program — or reacting to it. No email required to see your results.</p>
+    <button class="btn btn-grn" id="startBtn" style="font-size:.88rem;padding:.95rem 2.2rem;margin-bottom:2.75rem">Start the Scorecard →</button>
     <div class="st-pillars">
       <div class="st-pillar">
         <span class="st-pillar-n">01</span>
@@ -261,8 +265,7 @@ h2.sh.lt{color:var(--white)}
         </div>
       </div>
     </div>
-    <button class="btn btn-dk" id="startBtn" style="font-size:.8rem;padding:.9rem 2rem">Start the Scorecard</button>
-    <p class="st-meta">Free. No signup. Your results are yours to email or download at the end.</p>
+    <p style="font-size:.72rem;color:rgba(255,255,255,.3);margin-top:2rem">© 2026 Pageturn. All rights reserved.</p>
   </div>
 </section>
 
@@ -284,7 +287,7 @@ h2.sh.lt{color:var(--white)}
         <span class="qz-sep" id="navSep">·</span>
         <span class="qz-restart" id="restartBtn">Start Over</span>
       </div>
-      <button class="btn btn-dk" id="nextBtn" disabled>Next</button>
+      <button class="btn btn-grn" id="nextBtn" disabled>Next →</button>
     </div>
   </div>
 </section>
@@ -323,7 +326,7 @@ h2.sh.lt{color:var(--white)}
         <div class="rs-cta-title" id="ctaTitle"></div>
         <p class="rs-cta-body" id="ctaBody"></p>
         <div class="rs-cta-row">
-          <a href="#" class="btn btn-dk" id="ctaPrimaryBtn">Learn More</a>
+          <a href="#" class="btn btn-grn" id="ctaPrimaryBtn">Learn More →</a>
           <a href="owner-intelligence-framework.html" class="btn btn-ol-dk">Read the Full Framework</a>
         </div>
       </div>
@@ -335,6 +338,7 @@ h2.sh.lt{color:var(--white)}
       <div class="rs-retake">
         <a href="#" id="retakeBtn">Retake the Scorecard</a>
       </div>
+      <p style="text-align:center;font-size:.72rem;color:var(--taupe);margin-top:2.5rem;padding-bottom:1rem">© 2026 Pageturn. All rights reserved.</p>
 
     </div>
   </div>
@@ -347,7 +351,7 @@ h2.sh.lt{color:var(--white)}
     <p class="modal-desc">This opens your own email app with your results pre-filled. Nothing is sent to Pageturn or stored anywhere — it's just a shortcut to email yourself the summary.</p>
     <input type="email" class="modal-input" id="modalEmailInput" placeholder="your@email.com">
     <div class="modal-row">
-      <button class="btn btn-dk" id="modalSendBtn" style="flex:1">Open Email</button>
+      <button class="btn btn-grn" id="modalSendBtn" style="flex:1">Open Email →</button>
       <button class="modal-cancel" id="modalCancelBtn">Cancel</button>
     </div>
   </div>
@@ -599,7 +603,7 @@ function renderQuestion(){
   });
 
   document.getElementById('nextBtn').disabled = (answers[currentQ] === null);
-  document.getElementById('nextBtn').textContent = (currentQ === QUESTIONS.length - 1) ? 'See My Results' : 'Next';
+  document.getElementById('nextBtn').textContent = (currentQ === QUESTIONS.length - 1) ? 'See My Results →' : 'Next →';
   document.getElementById('backBtn').classList.toggle('hide', currentQ === 0);
   document.getElementById('navSep').classList.toggle('hide', currentQ === 0);
 }
@@ -730,7 +734,7 @@ function computeAndShowResults(){
   document.getElementById('ctaTitle').textContent = tier.title;
   document.getElementById('ctaBody').textContent = tier.body;
   const ctaBtn = document.getElementById('ctaPrimaryBtn');
-  ctaBtn.textContent = tier.btnText;
+  ctaBtn.textContent = tier.btnText + ' →';
   ctaBtn.href = tier.href;
   ctaBtn.onclick = () => { if (typeof gtag === 'function') gtag('event','scorecard_cta_click', {recommended_tier: r.recommendedTier}); };
 
