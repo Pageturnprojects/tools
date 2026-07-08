@@ -552,10 +552,10 @@ body.embed-mode #hero { min-height: 600px; }
 <!-- ============================================================
      PAGE: HOME
 ============================================================ -->
-<div id="home-page" class="page active" style="background:#1C1D1F; min-height:100vh; display:flex; flex-direction:column;">
+<div id="home-page" class="page active">
   <main style="flex:1; display:flex; flex-direction:column;">
 
-    <section id="hero" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:hidden; padding:5rem 1.25rem 3rem;">
+    <section id="hero" style="min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; overflow:hidden; padding:5rem 1.25rem 3rem;">
       <div class="hero-overlay"></div>
       <div class="hero-dots"></div>
 
@@ -1142,7 +1142,10 @@ function showPage(name) {
   const hdr = document.getElementById('app-header');
   if (hdr) hdr.style.display = name === 'home' ? 'none' : '';
   updateHeader(name);
-  window.scrollTo(0,0);
+  // Scroll to top reliably
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
   // Tell parent iframe to resize
   setTimeout(() => {
     try {
@@ -1164,7 +1167,7 @@ function updateHeader(page) {
   const soBtn = document.getElementById('start-over-btn');
   soBtn.classList.toggle('hidden', page === 'home');
 
-  const map = { home: [], wizard: ['Wizard'], results: ['Wizard','Results'], report: ['Wizard','Results','Report'] };
+  const map = { home: [], wizard: [], results: ['Results'], report: ['Results','Report'] };
   const trail = map[page] || [];
   const paths = { Wizard: 'wizard', Results: 'results', Report: 'report' };
   const html = trail.map((label, i) => {
@@ -1189,20 +1192,17 @@ function startOver() {
 // ================================================================
 function submitWizard(e) {
   e.preventDefault();
-  const errors = {};
-  const v = (id) => document.getElementById(id).value.trim();
+  const v = (id) => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
 
+  const errors = {};
   if (!v('f-projectName')) errors.projectName = true;
   if (!v('f-orgName')) errors.orgName = true;
-  if (!v('f-contact')) errors.contact = true;
-  const email = v('f-email');
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = true;
   if (!v('f-type')) errors.type = true;
   if (!v('f-sqft') || parseFloat(v('f-sqft')) <= 0) errors.sqft = true;
   if (!v('f-year') || parseInt(v('f-year')) < 2024) errors.year = true;
   if (!v('f-basecost') || parseFloat(v('f-basecost')) <= 0) errors.basecost = true;
 
-  const errIds = ['projectName','orgName','contact','email','type','sqft','year','basecost'];
+  const errIds = ['projectName','orgName','type','sqft','year','basecost'];
   let hasErr = false;
   errIds.forEach(k => {
     const msg = document.getElementById('e-'+k);
@@ -1218,29 +1218,31 @@ function submitWizard(e) {
   });
 
   if (hasErr) {
-    document.getElementById('wizard-errors').classList.remove('hidden');
-    window.scrollTo(0,0);
+    const errBox = document.getElementById('wizard-errors');
+    if (errBox) errBox.classList.remove('hidden');
     return;
   }
-  document.getElementById('wizard-errors').classList.add('hidden');
 
-  // Save to state
+  const errBox = document.getElementById('wizard-errors');
+  if (errBox) errBox.classList.add('hidden');
+
   state.projectName = v('f-projectName');
   state.orgName = v('f-orgName');
   state.contact = v('f-contact');
   state.email = v('f-email');
   state.projectType = v('f-type');
   state.sqft = v('f-sqft');
-  state.rooms = document.getElementById('f-rooms').value;
+  state.rooms = v('f-rooms');
   state.baseCost = v('f-basecost');
   state.year = v('f-year');
-  state.soft = parseFloat(document.getElementById('f-soft').value) || 15;
+  state.soft = parseFloat(document.getElementById('f-soft').value) || 23;
   state.owner = parseFloat(document.getElementById('f-owner').value) || 10;
-  state.contingency = parseFloat(document.getElementById('f-contingency').value) || 15;
-  state.escalation = parseFloat(document.getElementById('f-escalation').value) || 3;
+  state.contingency = parseFloat(document.getElementById('f-contingency').value) || 10;
+  state.escalation = parseFloat(document.getElementById('f-escalation').value) || 6;
 
   showPage('results');
 }
+
 
 // ================================================================
 //  RESULTS PAGE
