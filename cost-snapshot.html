@@ -987,7 +987,7 @@ const PROJECT_TYPE_CONTENT = {
     commonStudies: ['Comprehensive Hazardous Materials Survey (Asbestos, Lead, PCBs)','Structural and Seismic Assessment','Building Envelope and Moisture Evaluation','Mechanical, Electrical, and Plumbing (MEP) Systems Assessment','DSA Code Compliance and ADA Review','Energy Audit and Title 24 Analysis','Indoor Air Quality (IAQ) Assessment','Acoustical compliance audit'],
     questionsToDiscuss: ['What is the defined extent of modernization (light, medium, heavy)?','Can classes be completely relocated during construction to save costs?','What is the known condition of existing MEP systems?','Are there known hazardous materials from previous reports?','What standard of technology upgrades are needed?','Are there district-wide energy efficiency goals to meet?','What is the exact building age and history of additions?','Are there historical preservation requirements or community sentiments?']
   },
-  'TK/Kinder Expansion': {
+  'TK/Kinder Classrooms': {
     keyAssumptions: [
       'Each classroom is approximately 1,350 sq.ft. with an in-room restroom (two child-height toilets and two sinks) per California child care licensing requirements',
       'Minimum 35 sq.ft. of indoor activity space per child (excluding restrooms, hallways, and storage) per CDSS/CCL standards',
@@ -1034,25 +1034,19 @@ const PROJECT_TYPE_CONTENT = {
       'Is there an identified operating subcontractor or program partner for the child care program?',
       'What is the confirmed outdoor play area square footage per child based on planned enrollment?',
       'Are there known hazardous materials in existing structures that could affect the licensing timeline?',
-      'What is the local fire authority's typical turnaround on fire clearance inspections?',
+      'What is the local fire authority\'s typical turnaround on fire clearance inspections?',
       'Will meals or snacks be prepared on-site, triggering health department review?',
       'How will parent drop-off be separated from the main campus traffic flow?'
     ]
   },
-  'Gymnasium': {
+  'Gymnasium / Multipurpose': {
     keyAssumptions: ['Full regulation court dimensions with required safety clearances','Telescoping bleacher seating capacity for target audience','Comprehensive locker room, team room, and restroom facilities','Substantial secure storage for diverse athletic equipment','High-performance acoustical treatment for noise reverberation control','Robust HVAC designed for large volume, high-occupancy space','High-impact, glare-free LED lighting for athletic activities','ADA accessibility for all spectator, athlete, and official areas'],
     ownerScopeItems: ['Athletic equipment, standard pads, and apparatus','Digital scoreboards, shot clocks, and timing systems','Telescoping bleacher seating and motorized controls','Locker room lockers, benches, and furnishings','Public address sound system and AV equipment','Premium gymnasium flooring system and finishing','Wall padding, netting, and specialized safety equipment','Branded signage, graphics, and floor logos'],
     planningConsiderations: ['Multi-use programming requirements (assemblies, testing, community use)','After-hours community use, zoning, and secure scheduling','Event parking capacity and event traffic management','Concessions, ticketing, or food service operational needs','Building security, isolation from main campus, and access control','Acoustics and potential noise impact on adjacent academic spaces','Energy efficiency strategies for large volume conditioning','Long-term floor maintenance and resurfacing operations'],
     commonStudies: ['Extensive Geotechnical Investigation (large span foundations)','Topographic Survey and Grading Analysis','Acoustical and Reverberation Analysis','Large-Span Structural System Evaluation','High-Volume HVAC Load Calculations','Daylighting and Artificial Lighting Design Study','Event Traffic and Parking Impact Analysis','Energy Modeling and Title 24 Compliance'],
     questionsToDiscuss: ['What is the precise seating capacity and program configuration?','Are locker rooms, team rooms, and storage sized for all sports?','What is the planned community joint-use agreement?','Are there future expansion or multi-court requirements?','What level of AV and scoreboard technology is required?','What is the desired floor finish and warranty expectation?','How will after-hours access, security, and scheduling work?','What are the acoustical performance targets?']
   },
-  'Multipurpose Building': {
-    keyAssumptions: ['Designed for both food service and large-group student assembly','Commercial kitchen fully equipped per health code requirements','Stage or performance area with basic AV and lighting systems','Adequate HVAC for high-occupancy variable use','Durable, cleanable finish materials for food service areas','Acoustical treatment for multipurpose assembly and performance','Full ADA accessibility for all users and performers','Loading dock or service area for food deliveries'],
-    ownerScopeItems: ['Commercial food service equipment and kitchen smallwares','Folding tables, chairs, and storage systems','Stage curtains, rigging, and theatrical lighting','AV system, projection screen, and sound system','Kitchen ventilation hood and fire suppression system','Walk-in refrigeration and freezer units','Custodial equipment, storage, and support systems','Point-of-sale and meal tracking technology'],
-    planningConsiderations: ['Health department permits, inspections, and code compliance','Acoustic separation between kitchen and assembly areas','Service vehicle access and delivery routing on campus','Phasing to maintain food service operations during construction','Coordination with district nutrition services and meal programs','Energy efficiency and utility costs for commercial kitchen','Long-term operations, staffing models, and custodial needs','Future adaptability for expanded programming or performing arts'],
-    commonStudies: ['Health Code and Food Service Equipment Compliance Review','Acoustical Analysis for Assembly and Performance Use','Structural Assessment for Large-Span Roof System','Commercial Kitchen Ventilation and Exhaust Design','HVAC Load Calculations for High-Occupancy Variable Use','ADA Accessibility Compliance Review','Traffic Flow and Service Vehicle Routing Study','Energy Modeling for Kitchen and HVAC Systems'],
-    questionsToDiscuss: ['What is the target daily meal count and service model?','Is a full-service kitchen or a warming kitchen required?','What is the maximum assembly/performance occupancy load?','Are there performing arts or theatrical program goals?','What are the joint-use agreements for after-hours community events?','What is the district\'s nutrition services equipment standard?','Are there specific acoustical performance requirements for the space?','How will custodial and operational staffing be resourced?']
-  },
+
   'Science Building': {
     keyAssumptions: ['Specialized plumbing, gas, and chemical exhaust systems required','Lab-grade casework and safety eyewash/shower stations','Robust fume hood ventilation and HVAC air change requirements','Enhanced structural requirements for heavy equipment loads','Integrated technology, multimedia, and presentation systems','Chemical storage rooms with proper ventilation and containment','ADA compliance in all lab and support spaces','Coordination with district science curriculum and equipment standards'],
     ownerScopeItems: ['Scientific equipment, microscopes, and lab instruments','Chemical inventory, supplies, and storage systems','Lab-grade furniture and adjustable student workstations','Technology devices, sensors, and data collection systems','Safety equipment (goggles, aprons, gloves, fire blankets)','Fume hood equipment and emergency ventilation controls','Specialized storage for hazardous chemicals per code','Staff training on lab safety protocols and new equipment'],
@@ -1081,14 +1075,8 @@ const PROJECT_TYPE_CONTENT = {
     commonStudies: ['Detailed Roof Condition Assessment and Core Sampling','Structural Capacity Evaluation (especially for added insulation weight)','Infrared Moisture and Leak Detection Survey','Energy Modeling and Insulation R-Value Analysis','Hazardous Materials Testing (mastics, felts, flashing)','Roof Slope, Scupper, and Drainage Analysis','Warranty Type and System Comparison Matrix','Life-cycle Cost Analysis (TPO vs. PVC vs. Built-up)'],
     questionsToDiscuss: ['What is the specific age and current condition of the existing roof?','Are there known, documented active leaks or chronic problem areas?','What is the desired manufacturer warranty period (15, 20, 30 years)?','Are there specific energy efficiency or "cool roof" albedo goals?','What is the anticipated required lifespan of the new roof?','Are there future plans for rooftop solar panels or new HVAC equipment?','How flexible is the construction timeline regarding weather delays?','Are there strict budget constraints dictating overlay vs. tear-off?']
   },
-  'Security Improvements': {
-    keyAssumptions: ['Modernized access control and centralized visitor management','High-definition video surveillance and centralized monitoring','Comprehensive intrusion detection and alarm systems','Upgraded public address and emergency communication systems','Enhanced perimeter fencing, gates, and physical barriers','Security lighting and sightline visibility improvements','Seamless integration with existing district-wide IT systems','Mandatory staff training, drills, and updated procedures'],
-    ownerScopeItems: ['Security cameras, card readers, and server equipment/software','Ongoing monitoring contracts and response services','Staff training programs, drills, and emergency procedures','Emergency signage, evacuation maps, and wayfinding','Visitor management kiosk systems and badge printers','Classroom panic buttons or emergency communication devices','Annual system maintenance, licensing, and IT support','Comprehensive system documentation and IT as-builts'],
-    planningConsiderations: ['Findings from a formal threat assessment and security audit','Striking a balance between a secure facility and a welcoming school environment','Integration with local law enforcement emergency response systems','Privacy concerns, union agreements, and data security compliance','Community, parent, and stakeholder engagement on security measures','Budgeting for ongoing monitoring, software licenses, and staffing','Mitigating technology obsolescence and planning for upgrades','Coordination with local first responders for access protocols'],
-    commonStudies: ['Comprehensive CPTED Security Risk Assessment','Site, Perimeter, and Building Vulnerability Analysis','Existing Technology and IT Network Systems Evaluation','Nighttime Lighting, Glare, and Visibility Study','Access Control, Keying, and Pedestrian Circulation Review','Emergency Response and Evacuation Route Planning','Privacy and Regulatory Compliance Review','Cost-Benefit Analysis of Physical vs. Electronic Security Measures'],
-    questionsToDiscuss: ['What are the primary documented security concerns or past incidents?','What level of electronic access control is desired (exterior vs. interior)?','Are there existing district security platforms that must be integrated?','What centralized monitoring and immediate response capabilities are needed?','Are there specific regulatory, union, or privacy requirements to navigate?','What is the annual operating budget for ongoing software and monitoring?','How precisely will daily visitor access and deliveries be managed?','What level of emergency communication (PA, text, visual) is needed?']
-  },
-  'Site Improvements': {
+
+  'Landscape Improvements': {
     keyAssumptions: ['Significant parking, drop-off, and vehicular circulation upgrades','Drought-tolerant landscaping and smart irrigation systems','Extensive drainage, grading, and stormwater management (SWPPP)','Underground wet and dry utilities infrastructure replacement','Comprehensive ADA accessibility and path-of-travel compliance','Site lighting, security, and pedestrian safety improvements','Campus-wide vehicular and pedestrian signage and wayfinding','Careful coordination with ongoing school operations and bus routes'],
     ownerScopeItems: ['Landscape maintenance equipment and groundskeeper tools','Smart irrigation system controllers, software, and weather sensors','Site furnishings (benches, trash receptacles, bike racks)','Monument signage, digital marquees, and painted graphics','Playground structures, shade canopies, or athletic equipment','Perimeter fencing, rolling gates, and security barriers','Maintenance and operations staff training on new systems','Accurate underground utility as-built documentation'],
     planningConsiderations: ['Complex phasing to maintain continuous site access and fire lanes','Strict stormwater (SWPPP) and retention/detention requirements','Unforeseen conditions during underground utility relocations','Stringent accessibility, grading tolerances, and ADA compliance','Environmental, CEQA, and local agency permitting requirements','Community impact, neighbor engagement, and traffic mitigation','Seasonal timing, weather delays, and wet-weather grading rules','Long-term landscape maintenance and irrigation water costs'],
@@ -1137,7 +1125,7 @@ const PROJECT_TYPE_CONTENT = {
       'Community Engagement and Program Narrative Strategy'
     ],
     questionsToDiscuss: [
-      'What is the district's appetite for innovation and willingness to invest in a premium structural system?',
+      'What is the district\'s appetite for innovation and willingness to invest in a premium structural system?',
       'Has DSA been consulted on mass timber review experience and expected timeline for this project type?',
       'Are there sustainability, embodied carbon, or biophilic design goals that mass timber directly supports?',
       'What is the contractor pool in this region and do local GCs have mass timber experience?',
@@ -1147,10 +1135,10 @@ const PROJECT_TYPE_CONTENT = {
       'Is a life cycle cost comparison between mass timber and conventional construction desired for board presentation?'
     ]
   },
-  'Portable Classrooms (TK/K)': {
+  'Portable Classrooms': {
     keyAssumptions: [
-      'Standard classroom unit is 24'x40' (960 sq.ft.) — note: over 1,000 sq.ft. requires two egress doors per DSA',
-      'TK classrooms may require a 36'x48' (1,728 sq.ft.) three-bay configuration to meet CDSS 35 sq.ft. per child and in-room restroom requirements',
+      'Standard classroom unit is 24\'x40\' (960 sq.ft.) — note: over 1,000 sq.ft. requires two egress doors per DSA',
+      'TK classrooms may require a 36\'x48\' (1,728 sq.ft.) three-bay configuration to meet CDSS 35 sq.ft. per child and in-room restroom requirements',
       'Installed cost per unit (delivery, installation, ramps, ADA access, paving, and electrical connection) approximately $150,000–$200,000 each',
       'Refurbished/used portables may require significant upgrading to meet current DSA and accessibility standards',
       'DSA pre-approved modular units are available and can reduce approval timelines significantly',
@@ -1213,20 +1201,18 @@ const PROJECT_TYPE_CONTENT = {
 //  BASE COST SUGGESTIONS BY PROJECT TYPE ($/SF) — California 2026
 // ================================================================
 const PROJECT_TYPE_BASE_COSTS = {
-  'New Classroom Building':    1100,
-  'Classroom Modernization':    550,
-  'TK/Kinder Expansion':       1350,
-  'Gymnasium':                 1200,
-  'Multipurpose Building':     1050,
-  'Science Building':          1350,
-  'Administration Building':    950,
-  'HVAC Upgrade':               180,
-  'Roofing':                     95,
-  'Security Improvements':      120,
-  'Site Improvements':          350,
-  'Portable Classrooms (TK/K)':  175,
-  'Mass Timber Classrooms':      1450,
-  'Other':                       750,
+  'New Classroom Building':         1100,
+  'Mass Timber Classrooms':         1450,
+  'TK/Kinder Classrooms':           1200,
+  'Classroom Modernization':         550,
+  'Gymnasium / Multipurpose':       1500,
+  'Science Building':               1350,
+  'Administration Building':        1100,
+  'Portable Classrooms':             180,
+  'HVAC Upgrade':                    180,
+  'Roofing':                          95,
+  'Landscape Improvements':    48,
+  'Other':                             0,
 };
 
 function onProjectTypeChange(val) {
@@ -1678,9 +1664,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('footer-year').textContent = `© ${new Date().getFullYear()} Pageturn. All rights reserved.`;
 
-  // Populate project type dropdown
+  // Populate project type dropdown (ordered by PROJECT_TYPE_BASE_COSTS)
   const sel = document.getElementById('f-type');
-  Object.keys(PROJECT_TYPE_CONTENT).forEach(k => {
+  Object.keys(PROJECT_TYPE_BASE_COSTS).forEach(k => {
     const opt = document.createElement('option');
     opt.value = k; opt.textContent = k;
     sel.appendChild(opt);
