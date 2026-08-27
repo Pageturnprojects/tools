@@ -619,7 +619,7 @@ body.embed-mode #hero { min-height: 600px; }
     <section class="disclaimer-section">
       <div class="wrap" style="text-align:center;">
         <h6 style="color:rgba(255,255,255,0.85);">Important Disclaimer</h6>
-        <p style="color:rgba(255,255,255,0.75); text-align:center; margin:0 auto;">This tool provides conceptual planning information only. It is not a cost estimate, budget, bid forecast, or professional opinion of probable cost. Actual costs and project requirements will vary based on specific site conditions, final design, and market fluctuations.</p>
+        <p style="color:rgba(255,255,255,0.75); text-align:center; margin:0 auto;">This tool provides conceptual planning information only. It is not a cost estimate, budget, bid forecast, or professional opinion of probable cost, and using it does not create a professional relationship with Pageturn Projects, Inc. Cost data is calibrated to California construction costs, prevailing wage labor, and Division of the State Architect (DSA) review requirements. If you are outside California, costs and applicable regulatory requirements will vary — consult your state reviewing authority and local market conditions. Actual costs and project requirements will vary based on specific site conditions, final design, timeline, and market fluctuations. This output is not intended to be used as the basis for financing decisions, ballot measure sizing, or budget approval, and should not be relied upon for those purposes. Provided "as is," with no warranty of accuracy or completeness; Pageturn Projects, Inc. assumes no liability for decisions made based on this tool.</p>
       </div>
     </section>
 
@@ -650,7 +650,7 @@ body.embed-mode #hero { min-height: 600px; }
             <div class="section-num">1</div>
             <div>
               <div class="section-title">Project &amp; Organization Info</div>
-              <div class="section-desc">Basic contact and identifier information.</div>
+              <div class="section-desc">Basic project and organization identifiers.</div>
             </div>
           </div>
           <div class="form-section-body">
@@ -664,16 +664,6 @@ body.embed-mode #hero { min-height: 600px; }
                 <label for="f-orgName">District / Organization</label>
                 <input type="text" id="f-orgName" placeholder="Xavier Unified School District">
                 <span class="error-msg hidden" id="e-orgName">Organization name is required</span>
-              </div>
-              <div class="form-group">
-                <label for="f-contact">Contact Name</label>
-                <input type="text" id="f-contact" placeholder="Scott Summers">
-                <span class="error-msg hidden" id="e-contact">Contact name is required</span>
-              </div>
-              <div class="form-group">
-                <label for="f-email">Email Address</label>
-                <input type="email" id="f-email" placeholder="nathan@pageturn.co">
-                <span class="error-msg hidden" id="e-email">Valid email is required</span>
               </div>
             </div>
           </div>
@@ -755,8 +745,18 @@ body.embed-mode #hero { min-height: 600px; }
 
             <div class="alert-box mt-6">
               <span class="alert-icon">📋</span>
-              <span><strong>How these work:</strong> Soft Costs, Owner Costs, and Contingency are each calculated as a percentage of your <em>base hard construction cost</em> — not the escalated total. Escalation compounds annually on the hard cost only, from today to your target start year. All figures are conceptual and should be validated with your project team.</span>
+              <span><strong>How these work:</strong> Soft Costs, Owner Costs, and Contingency are each calculated as a percentage of your <em>base hard construction cost</em> — not the escalated total. Escalation compounds annually on the hard cost only, from today to your target start year. All figures are based on California construction costs, prevailing wage, and Division of the State Architect (DSA) review requirements. If you are outside California, costs and regulatory requirements will vary — consult your applicable state reviewing authority and local labor market conditions. All figures are conceptual and should be validated with your project team.</span>
             </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-section-body">
+            <label style="display:flex; align-items:flex-start; gap:0.6rem; font-size:0.875rem; color:var(--fg-muted); cursor:pointer;">
+              <input type="checkbox" id="f-ack" style="margin-top:0.2rem;" onchange="document.getElementById('e-ack').classList.add('hidden')">
+              <span>I understand this tool produces conceptual planning information only — not a cost estimate, budget, bid forecast, or professional opinion of probable cost — and that it should not be used as the basis for financing decisions, ballot measure sizing, or budget approval.</span>
+            </label>
+            <span class="error-msg hidden" id="e-ack" style="display:block; margin-top:0.4rem;">Please acknowledge the disclaimer to continue.</span>
           </div>
         </div>
 
@@ -791,6 +791,11 @@ body.embed-mode #hero { min-height: 600px; }
 
       <!-- Project summary cards -->
       <div class="grid-3 mb-8" id="r-summary-cards"></div>
+
+      <!-- Disclaimer (shown before the numbers) -->
+      <div class="card mb-6" style="background:var(--bg-muted);">
+        <p style="font-size:0.875rem; color:var(--fg-muted); margin:0;"><strong style="color:var(--fg);">Before you read the numbers below:</strong> this is conceptual planning information only — not a cost estimate, budget, bid forecast, or professional opinion of probable cost, and not a basis for financing decisions, ballot measure sizing, or budget approval. See full disclaimer below.</p>
+      </div>
 
       <!-- Planning Range Banner -->
       <div class="range-banner mb-8">
@@ -853,8 +858,10 @@ body.embed-mode #hero { min-height: 600px; }
         <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
           <button class="btn btn-ghost" onclick="startOver()">↺ Start Over</button>
           <button class="btn btn-outline" onclick="copyShareLink(this)">🔗 Copy Shareable Link</button>
+          <button class="btn btn-outline" onclick="emailMyselfCopy()">✉ Email Myself a Copy</button>
           <button class="btn btn-primary btn-lg" onclick="showPage('report')">📄 Prepare Printable Report</button>
         </div>
+        <p style="color:var(--fg-muted); font-size:0.75rem; margin:0.75rem auto 0; max-width:60ch;">"Email Myself a Copy" opens your own email app with a link pre-filled — Pageturn does not collect or store your email address.</p>
       </div>
     </div>
   </main>
@@ -954,7 +961,7 @@ body.embed-mode #hero { min-height: 600px; }
       <!-- Disclaimer -->
       <div class="mt-10 pt-8" style="border-top:1px solid var(--border);">
         <div class="card" style="background:var(--bg-muted); margin-bottom:2rem;">
-          <p style="font-size:0.875rem; color:var(--fg-muted);"><strong style="color:var(--fg);">Disclaimer:</strong> This tool provides conceptual planning information only. It is not a cost estimate, budget, bid forecast, or professional opinion of probable cost. Actual costs and project requirements will vary based on specific site conditions, final design, timeline, and market fluctuations at the time of bid.</p>
+          <p style="font-size:0.875rem; color:var(--fg-muted);"><strong style="color:var(--fg);">Disclaimer:</strong> This tool provides conceptual planning information only. It is not a cost estimate, budget, bid forecast, or professional opinion of probable cost, and using it does not create a professional relationship with Pageturn Projects, Inc. Cost data is calibrated to California construction costs, prevailing wage labor, and Division of the State Architect (DSA) review requirements. If you are outside California, costs and applicable regulatory requirements will vary — consult your state reviewing authority and local market conditions. Actual costs and project requirements will vary based on specific site conditions, final design, timeline, and market fluctuations at the time of bid. This output is not intended to be used as the basis for financing decisions, ballot measure sizing, or budget approval, and should not be relied upon for those purposes. Provided "as is," with no warranty of accuracy or completeness; Pageturn Projects, Inc. assumes no liability for decisions made based on this tool.</p>
         </div>
 
         <div class="cta-card print-hidden">
@@ -1068,12 +1075,30 @@ const PROJECT_TYPE_CONTENT = {
     commonStudies: ['Comprehensive HVAC System Condition Assessment','Title 24 Energy Compliance and Load Calculations','Hazardous Materials Survey of Existing Ductwork','Structural Assessment of Roof for New Equipment Loads','Indoor Air Quality (IAQ) Baseline and Improvement Analysis','Building Automation System (BAS) Compatibility and Integration Study','Utility Rate and Energy Rebate Program Analysis','Life-cycle Cost Analysis (multiple HVAC system types)'],
     questionsToDiscuss: ['What is the age and current condition of each system?','Are there known indoor air quality complaints or issues?','What is the specific Title 24 compliance requirement for this scope?','Are there existing Building Automation System components to integrate?','What is the district\'s desired equipment lifespan and warranty?','Are there specific filtration or IAQ improvement targets?','What is the construction window relative to the academic calendar?','Are there utility rebate or state energy funding programs available?']
   },
-  'Roofing': {
+  'Roofing (Single-Ply / BUR)': {
     keyAssumptions: ['Complete tear-off and replacement of existing roofing membrane','New insulation to current Title 24 and energy code requirements','Replacement of all flashings, penetrations, copings, and curbs','Rooftop equipment disconnection, resupport, and reconnection','Comprehensive corrective drainage and slope improvements','Hazardous materials abatement (mastics, felts) prior to removal','No-dollar-limit (NDL) manufacturer warranty on completed system','DSA review required for any attached or DSA-jurisdiction buildings'],
-    ownerScopeItems: ['Safe removal and legal disposal of existing hazardous materials','Coordination with ongoing school operations and testing schedules','As-built documentation of all new penetrations and curbs'],
-    planningConsiderations: ['Strict weather dependency and seasonal construction timing (summer)','Minimizing noise, odor (asphalt), and disruption to occupants','Discovery of unforeseen deck damage, dry rot, or existing leaks','Structural capacity if overlaying instead of a complete tear-off','Energy efficiency, Title 24 compliance, and cool roof options','Correcting existing drainage, scuppers, and ponding water issues','Raising or flashing existing rooftop equipment and pipe penetrations','Securing a long-term, no-dollar-limit (NDL) manufacturer warranty'],
-    commonStudies: ['Detailed Roof Condition Assessment and Core Sampling','Structural Capacity Evaluation (especially for added insulation weight)','Infrared Moisture and Leak Detection Survey','Energy Modeling and Insulation R-Value Analysis','Hazardous Materials Testing (mastics, felts, flashing)','Roof Slope, Scupper, and Drainage Analysis','Warranty Type and System Comparison Matrix','Life-cycle Cost Analysis (TPO vs. PVC vs. Built-up)'],
-    questionsToDiscuss: ['What is the specific age and current condition of the existing roof?','Are there known, documented active leaks or chronic problem areas?','What is the desired manufacturer warranty period (15, 20, 30 years)?','Are there specific energy efficiency or "cool roof" albedo goals?','What is the anticipated required lifespan of the new roof?','Are there future plans for rooftop solar panels or new HVAC equipment?','How flexible is the construction timeline regarding weather delays?','Are there strict budget constraints dictating overlay vs. tear-off?']
+    ownerScopeItems: ['Safe removal and legal disposal of existing hazardous materials','Coordination with ongoing school operations and testing schedules','As-built documentation of all new penetrations and curbs','Owner-procured roofing materials via CMAS or cooperative purchasing contract if splitting materials from labor (see Planning Considerations)','Commissioning and warranty registration with manufacturer after installation'],
+    planningConsiderations: [
+      'Strict weather dependency and seasonal construction timing — plan for summer construction window only',
+      'Minimize noise, odor (asphalt), and disruption to occupants — early morning scheduling and building isolation recommended',
+      'Discovery of unforeseen deck damage, dry rot, or active leaks is common — budget a deck repair allowance',
+      'Structural capacity must be confirmed if adding insulation thickness or overlaying existing system',
+      'Energy efficiency, Title 24 cool roof requirements, and solar-ready considerations should be integrated early',
+      'Correct existing drainage deficiencies, scupper sizing, and ponding water conditions before new membrane goes down',
+      'Raise and re-flash all rooftop equipment, pipe penetrations, and curbs to match new roof height',
+      'Owner Material Procurement Strategy: Consider splitting the contract — owner purchases roofing materials directly through a CMAS or cooperative purchasing agreement (e.g., Garland, Carlisle, or similar state-approved vendor), and competitively bids the labor/installation separately. This approach can reduce total project cost by 10-20% by eliminating the contractor markup on materials, which typically represents 40-50% of a roofing contract value. Requires advance planning and coordination with your legal counsel and purchasing department.'
+    ],
+    commonStudies: ['Detailed Roof Condition Assessment and Core Sampling','Structural Capacity Evaluation (especially for added insulation weight)','Infrared Moisture and Leak Detection Survey','Energy Modeling and Insulation R-Value Analysis','Hazardous Materials Testing (mastics, felts, flashing)','Roof Slope, Scupper, and Drainage Analysis','Warranty Type and System Comparison Matrix','Life-cycle Cost Analysis (TPO vs. PVC vs. Built-up vs. Modified Bitumen SBS)'],
+    questionsToDiscuss: [
+      'What is the specific age and current condition of the existing roof — and when was the last replacement or major repair?',
+      'Are there known, documented active leaks or chronic problem areas that have been temporarily patched?',
+      'What is the desired manufacturer warranty period (15, 20, or 30 years NDL)?',
+      'Has the district explored owner-direct material procurement through CMAS or a cooperative purchasing agreement to reduce total cost?',
+      'Are there specific energy efficiency, cool roof albedo, or sustainability goals to achieve?',
+      'Are there future plans for rooftop solar that should influence membrane type and attachment method selection?',
+      'How flexible is the construction timeline — is a full summer window available, or will phasing be required?',
+      'Are there strict budget constraints that would require evaluating overlay vs. full tear-off and replacement?'
+    ]
   },
 
   'Landscape Improvements': {
@@ -1210,7 +1235,7 @@ const PROJECT_TYPE_BASE_COSTS = {
   'Administration Building':        1100,
   'Portable Classrooms':             180,
   'HVAC Upgrade':                    180,
-  'Roofing':                          95,
+  'Roofing (Single-Ply / BUR)':                          95,
   'Landscape Improvements':    48,
   'Other':                             0,
 };
@@ -1222,7 +1247,7 @@ function onProjectTypeChange(val) {
   if (suggested && input) {
     input.value = suggested;
     input.style.borderColor = 'var(--brand-primary)';
-    if (hint) hint.textContent = 'Suggested for ' + val + ' in California (2026). Adjust as needed.';
+    if (hint) hint.innerHTML = 'Reference figure based on recent California projects — not a cost estimate. Verify with a professional estimator for your region and project conditions.';
   } else {
     if (hint) hint.textContent = '';
   }
@@ -1231,7 +1256,7 @@ function onProjectTypeChange(val) {
 //  APP STATE & UTILITIES
 // ================================================================
 const state = {
-  projectName: '', orgName: '', contact: '', email: '',
+  projectName: '', orgName: '',
   projectType: '', sqft: '', rooms: '',
   baseCost: '', year: '', soft: 15, owner: 10, contingency: 15, escalation: 3,
   costs: null
@@ -1316,9 +1341,10 @@ function updateHeader(page) {
 }
 
 function startOver() {
-  Object.assign(state, { projectName:'',orgName:'',contact:'',email:'',projectType:'',sqft:'',rooms:'',baseCost:'',year:'',soft:15,owner:10,contingency:15,escalation:3,costs:null });
+  Object.assign(state, { projectName:'',orgName:'',projectType:'',sqft:'',rooms:'',baseCost:'',year:'',soft:15,owner:10,contingency:15,escalation:3,costs:null });
   // reset form
-  ['f-projectName','f-orgName','f-contact','f-email','f-sqft','f-rooms','f-basecost','f-year'].forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
+  ['f-projectName','f-orgName','f-sqft','f-rooms','f-basecost','f-year'].forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
+  const ackReset = document.getElementById('f-ack'); if (ackReset) ackReset.checked = false;
   document.getElementById('f-type').value = '';
   ['f-soft','f-owner','f-contingency','f-escalation'].forEach((id,i) => { const el=document.getElementById(id); if(el) el.value=[23,10,10,6][i]; });
   showPage('home');
@@ -1354,9 +1380,21 @@ function submitWizard(e) {
     }
   });
 
+  const ackEl = document.getElementById('f-ack');
+  const ackMsg = document.getElementById('e-ack');
+  if (!ackEl || !ackEl.checked) {
+    if (ackMsg) ackMsg.classList.remove('hidden');
+    hasErr = true;
+  } else if (ackMsg) {
+    ackMsg.classList.add('hidden');
+  }
+
   if (hasErr) {
     const errBox = document.getElementById('wizard-errors');
-    if (errBox) errBox.classList.remove('hidden');
+    if (errBox) {
+      errBox.classList.remove('hidden');
+      errBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
     return;
   }
 
@@ -1365,8 +1403,6 @@ function submitWizard(e) {
 
   state.projectName = v('f-projectName');
   state.orgName = v('f-orgName');
-  state.contact = v('f-contact');
-  state.email = v('f-email');
   state.projectType = v('f-type');
   state.sqft = v('f-sqft');
   state.rooms = v('f-rooms');
@@ -1583,7 +1619,7 @@ function renderReport() {
 //  SHAREABLE LINK — URL ENCODE / DECODE
 // ================================================================
 const URL_KEYS = {
-  n: 'projectName', o: 'orgName', c: 'contact', e: 'email',
+  n: 'projectName', o: 'orgName',
   t: 'projectType', s: 'sqft', r: 'rooms',
   b: 'baseCost', y: 'year', sf: 'soft', ow: 'owner',
   co: 'contingency', es: 'escalation'
@@ -1611,6 +1647,18 @@ function loadFromURL() {
     state[k] = parseFloat(state[k]) || state[k];
   });
   return true;
+}
+
+function emailMyselfCopy() {
+  const url = buildShareURL();
+  const subject = encodeURIComponent('Pageturn Project Planning Snapshot: ' + (state.projectName || 'Untitled Project'));
+  const body = encodeURIComponent(
+    'Here is a link to my Pageturn Project Planning Snapshot:\n\n' + url +
+    '\n\nReminder: this is conceptual planning information only — not a cost estimate, budget, bid forecast, or professional opinion of probable cost.'
+  );
+  // Opens the user's own email client with themself as an available "To:" field to fill in.
+  // No email address is collected, transmitted to, or stored by Pageturn.
+  window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
 }
 
 function copyShareLink(btnEl) {
