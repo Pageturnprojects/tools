@@ -739,7 +739,7 @@ body.embed-mode #hero { min-height: 600px; }
               </div>
               <div class="form-group">
                 <label for="f-escalation">Annual Escalation (%)</label>
-                <input type="number" id="f-escalation" value="6" min="0" max="30">
+                <input type="number" id="f-escalation" value="4" min="0" max="30">
               </div>
             </div>
 
@@ -1346,7 +1346,7 @@ function startOver() {
   ['f-projectName','f-orgName','f-sqft','f-rooms','f-basecost','f-year'].forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
   const ackReset = document.getElementById('f-ack'); if (ackReset) ackReset.checked = false;
   document.getElementById('f-type').value = '';
-  ['f-soft','f-owner','f-contingency','f-escalation'].forEach((id,i) => { const el=document.getElementById(id); if(el) el.value=[23,10,10,6][i]; });
+  ['f-soft','f-owner','f-contingency','f-escalation'].forEach((id,i) => { const el=document.getElementById(id); if(el) el.value=[23,10,10,4][i]; });
   showPage('home');
 }
 
